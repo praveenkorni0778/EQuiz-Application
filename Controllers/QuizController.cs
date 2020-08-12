@@ -5,8 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Quiz.Api.DataAccess;
-using System.Web.Http;
 using EQuiz.Models;
+using System.Web.Http;
 
 namespace EQuiz.Controllers
 {
@@ -40,13 +40,19 @@ namespace EQuiz.Controllers
             return result;
         }
         
+        [System.Web.Http.Route("api/Quiz/Update")]
+        [System.Web.Http.HttpGet]
+        [System.Web.Http.HttpPut]
         public string Put([FromUri]QuizModel obj)
-        {
+        {            
             string result = quizDataAccess.Put(obj);
             return result;
         }
 
-        public string Delete([FromUri]int id)
+        [System.Web.Http.Route("api/Quiz/Delete")]
+        [System.Web.Http.HttpGet]
+        [System.Web.Http.HttpDelete]
+        public string Delete(int id)
         {
             string result = quizDataAccess.Delete(id);
             return result;

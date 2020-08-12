@@ -55,25 +55,27 @@ function ShowAllQuizData() {
             key: "q_id", //primary key or table for which api created
             loadUrl: URL,
             deleteUrl: URL + "/Delete",
-            insertUrl: URL + "/Insert",
+            insertUrl: URL + "/Post",
             updateUrl: URL + "/Update",
             onBeforeSend: function (method, jQueryAjaxSettings) {
                 jQueryAjaxSettings.xhrFields = { withCredentials: true };
                 if (method === "insert") {
                     var json = $.parseJSON(jQueryAjaxSettings.data.values);                   
                     jQueryAjaxSettings.url += "?q_name=" + json.q_name + "&q_instruction=" + json.q_instruction + "&q_duration=" + json.q_duration
-                        + "&q_status=" + json.q_status + "&q_tag=" + json.q_tag + "&q_adder=" + json.q_adder
-                        
+                        + "&q_status=" + json.q_status + "&q_tag=" + json.q_tag + "&q_adder=" + json.q_adder 
+                    alert("Add Link: " + jQueryAjaxSettings.url);
                     DevExpress.ui.notify('Record Created successfully!!', 'success', 1000);
                 }
                 if (method === "update") {                    
                     var json = $.parseJSON(jQueryAjaxSettings.data.values);
-                    jQueryAjaxSettings.url += "?q_id=" + json.q_id + "?q_name=" + json.q_name + "&q_instruction=" + json.q_instruction + "&q_duration=" + json.q_duration
-                        + "&q_status=" + json.q_status + "&q_tag=" + json.q_tag + "&q_adder=" + json.q_adder
+                    jQueryAjaxSettings.url += "?q_id=" + json.q_id + "&q_name='" + json.q_name + "'&q_instruction='" + json.q_instruction + "'&q_duration=" + json.q_duration
+                        + "&q_status=" + json.q_status + "&q_tag=" + json.q_tag + "&q_adder=" + json.q_adder;
+                    alert("UPdate Link: " + jQueryAjaxSettings.url);
                     DevExpress.ui.notify('Record Updated successfully!!', 'success', 1000);
                 }
                 if (method === "delete") {                    
-                    jQueryAjaxSettings.url += "?q_id=" + json.q_id;
+                    jQueryAjaxSettings.url += "?id=" + jQueryAjaxSettings.data.key;
+                    //alert("Delete API: " + jQueryAjaxSettings.url);
                     DevExpress.ui.notify('Record Deleted successfully!!', 'success', 1000);
                 }
             }
@@ -166,13 +168,14 @@ function ShowAllQuizData() {
                 dataField: "q_instruction", width: 220, allowHeaderFiltering: false, caption: "Instruction"                
             },
             {
-                dataField: "q_duration", width: 70, allowHeaderFiltering: false, caption: "Duration"
+                dataField: "q_duration", width: 70, allowHeaderFiltering: false, caption: "Duration", dataType: "datetime",
+                format: "shortTime"
             },
             {
                 dataField: "q_status", width: 95, allowHeaderFiltering: true, caption: "Status"
             },
             {
-                dataField: "q_tag", width: 70, allowHeaderFiltering: true, dataType: 'Tag'
+                dataField: "q_tag", width: 70, allowHeaderFiltering: true, caption: 'Tag'
             },
             {
                 dataField: "q_adder", width: 100, allowHeaderFiltering: true,caption: "Added By",

@@ -54,8 +54,19 @@ namespace Quiz.Api.DataAccess
 
         public string Put(QuizModel obj)
         {
+            string qTagText = "";
+            if (obj.q_tag == -1)
+            {
+                qTagText = "NULL";
+            }
+            else
+            {
+                qTagText = obj.q_tag.ToString();
+            }
             string msg = "";
-            string queryString = "UPDATE tbl_quiz SET q_name = '" + obj.q_name + "',q_instruction ='" + obj.q_instruction + "',q_duration ='" + obj.q_duration + "',q_status =" + obj.q_status + ",q_tag =" + obj.q_tag + ",q_adder =" + obj.q_adder + " WHERE q_id ="+obj.q_id+"";
+            string queryString = @"UPDATE tbl_quiz SET q_name = " + obj.q_name + ",q_instruction =" + obj.q_instruction + "" +
+                ",q_duration ='" + obj.q_duration + "',q_status =" + obj.q_status + ",q_tag =" + qTagText + "" +
+                ",q_adder =" + obj.q_adder + " WHERE q_id ="+obj.q_id+"";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(queryString, connection);
