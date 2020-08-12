@@ -1,0 +1,49 @@
+﻿@model EQuiz.Models.tbl_quiz
+
+@{
+    ViewBag.Title = "ViewAllQuiz";
+}
+
+<h2>ViewAllQuiz</h2>
+<table class="table">
+    <thead class="row">
+        <tr>
+            <td class="col-lg-2">
+                Sr. No.
+            </td>
+            <td class="col-lg-7">
+                Name
+            </td>
+        </tr>
+    </thead>
+    @*@foreach (var item in Model) {
+    <tr>
+        <td>
+
+        </td>
+        <td>
+
+        </td>
+    </tr>
+    }*@
+    
+
+</table>
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        $(#postform).submit(function (e)){
+            e.preventDefault();
+            var apiurl = "https://localhost:44348/api/Quiz";
+            var data = {
+                StudentID: $("#txtStudentID").val().trim(),
+                StudentName: $("#txtStudentName").val().trim(),
+                Email: $("#txtEmail").val().trim(),
+                City: $("#txtCity").val().trim(),
+                Contact: $("#txtContact").val().trim(),
+                Country: $("#txtCountry").val().trim(),
+            }
+        }
+    }
+        });
+</script>*@
+

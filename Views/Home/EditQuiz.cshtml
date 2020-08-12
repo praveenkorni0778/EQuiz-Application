@@ -1,0 +1,289 @@
+﻿
+
+@{
+    ViewBag.Title = "EditQuiz";
+}
+    <head>
+        <style>
+            .toshow {
+                display: none;
+            }
+
+            #createQuiz {
+                display: block;
+            }
+        </style>
+        
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        @section scripts{
+            <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.5.0/jszip.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <script type="text/javascript" src="~/Scripts/DevExtreme/dx.all.js"></script>
+            <script src="~/Scripts/DevExtreme/dx.aspnet.data.js"></script>
+            <link href="~/Scripts/DevExtreme/dx.common.css" rel="stylesheet" />
+            <link href="~/Scripts/DevExtreme/dx.light.css" rel="stylesheet" />
+            <link href="~/Scripts/DevExtreme/dx.spa.css" rel="stylesheet" />
+            <link href="~/Content/dx.Custom.css" rel="stylesheet" />
+
+            <script src="~/Scripts/EditQuiz.js">
+            </script>
+        }
+
+    </head>
+<h2 class="text-center">EditQuiz</h2>
+<div class="row">
+    <div class="col-lg-12">
+        <div id="quizGrid" class="col-md-3" style="width:100%; margin-top:100px; color:black">
+            <div id="quizGridConatiner"> </div>
+        </div>
+    </div>
+    <script>
+        window.onload = function () {
+            alert("Start");
+            ShowAllQuizData();
+        }
+
+    </script>
+</div>
+    @*<div class="form-group col-lg-2">
+        <div class="form-group">
+            <input type="submit" id="addQuiz" value="Create Quiz" class="btn btn-primary btn-block" />
+        </div>
+        <div class="form-group">
+            <input type="submit" id="editQuizBtn" value="Edit Quiz" class="btn btn-primary btn-block" />
+        </div>
+        <div class="form-group">
+            <input type="button" id="addQuestion" value="Add Question" class="btn btn-primary btn-block" />
+        </div>
+        <div class="form-group">
+            <input type="submit" id="editQuestion" value="Edit Question" class="btn btn-primary btn-block" />
+        </div>
+
+        <div class="form-group">
+            <input type="submit" id="addAnswer" value="Add Answer" class="btn btn-primary btn-block" />
+        </div>
+        <div class="form-group">
+            <input type="submit" id="editAnswer" value="Edit Answer" class="btn btn-primary btn-block" />
+        </div>
+        <div class="form-group">
+            <input type="submit" id="addExplanation" value="Add Explanation" class="btn btn-primary btn-block" />
+        </div>
+        <div class="form-group">
+            <input type="submit" id="editExplanation" value="Edit Explanation" class="btn btn-primary btn-block" />
+        </div>*@
+
+
+ 
+    @* --------------------------------------------------------------------------------------------------------------*@
+    @*<div class="form-group col-lg-4" style="margin-left: 5%">
+        <div id="createQuiz" class="toshow">
+            <h2 class="center-block">Create Quiz</h2>
+            <div class="row form-group">
+                <label for="QuizName">Quiz Name</label>*@
+                @*<textarea class="form-control" id="" required="required"></textarea>
+                @Html.TextBoxFor(x => x.q_name, new { @class = "form-control", @placeholder = "Quiz Name", @required = "required" })
+            </div>
+            <div class="row form-group">
+                Enabled:<input type="radio" name="raido" value="1" /> @Html.RadioButtonFor(x => x.q_status, 1, new { })
+                Disabled:<input type="radio" name="raido" value="0" /> @Html.RadioButtonFor(x => x.q_status, 1, new { })
+            </div>
+            <div class="row form-group">
+                <label for="Duiration">Duration</label>
+                <input type="time" class="form-control" id="" />
+                @Html.TextBoxFor(x => x.q_duration, new { @class = "form-control", @type = "time", @required = "required" })
+            </div>
+            <div class="row form-group">
+                <label for="Instruction">Quiz Instructions</label>
+                <textarea class="form-control" id="" required="required"></textarea>
+                @Html.TextAreaFor(x => x.q_instruction, new { @class = "form-control", @placeholder = "Quiz Instruction", @required = "required" })
+            </div>
+            <div class="row form-group">
+                <label for="tag">Tag</label>
+                @Html.DropDownListFor(x => x.q_tag, ViewBag.categorylist as SelectList, "--Select--", new { @class = "form-control" })
+            </div>
+            <div class="row form-group">
+                <input type="submit" value="Submit" id="submit-btn" class="form-control btn btn-default btn-success" />
+            </div>
+        </div>
+         --------------------------------------------------------------------------------------------------------------
+        <div id="editQuiz" class="toshow">
+            <h2 class="center-block">Edit Quiz</h2>
+            <div class="form-group">
+                <div class="row form-group">
+                    <label for="QuizName">Quiz Id</label>
+                     @Html.TextBoxFor(x => x.q_name, new { @class = "form-control", @placeholder = "Quiz Name", @required = "required" })
+                    <input type="text" class="form-control" />
+                </div>
+
+                Enabled: <input type="radio" name="raido" value="1"/> @Html.RadioButtonFor(x => x.q_status, 1, new { })
+                Disabled: <input type="radio" name="raido" value="0" /> @Html.RadioButtonFor(x => x.q_status, 1, new { })
+            </div>
+
+            <div class="row form-group">
+                <label for="Duiration">Duration</label>
+                <input type="time" class="form-control" id="" />
+                @Html.TextBoxFor(x => x.q_duration, new { @class = "form-control", @type = "time", @required = "required" })
+            </div>
+            <div class="row form-group">
+                <label for="Instruction">Quiz Instructions</label>
+                <textarea class="form-control" id="" required="required" ></textarea>
+                @Html.TextAreaFor(x => x.q_instruction, new { @class = "form-control", @placeholder = "Quiz Instruction", @required = "required" })
+            </div>
+            <div class="row form-group">
+                <label for="tag">Tag</label>
+                @Html.DropDownListFor(x => x.q_tag, ViewBag.categorylist as SelectList, "--Select--", new { @class = "form-control" })
+            </div>
+            <div class="row form-group">
+                <input type="submit" value="Submit" id="submit-btn" class="form-control btn btn-default btn-success" />
+            </div>
+        </div>
+         --------------------------------------------------------------------------------------------------------------
+        <div id="addQues" class="form-group toshow">
+            <h2 class="center-block">Add Question</h2>
+            <div id="add">
+                <label for="Question">Quiz id:</label>
+                <input type="text" class="form-group form-control" />
+            </div>
+            <div>
+                <label for="Question">Question</label>
+                <textarea type="text" class="form-group form-control"></textarea>
+            </div>
+            <div class="row form-group">
+                <label for="Question">Status</label>
+                Enable: <input type="radio" name="radio" value="1" id="radio1" checked="checked">
+                Disable: <input type="radio" name="radio" value="2" id="radio2">
+            </div>
+            <div class="form-group">
+                <input type="submit" id="Add" value="Add" class="btn btn-primary" />
+            </div>
+        </div>
+         --------------------------------------------------------------------------------------------------------------
+        <div id="editQues" class="toshow">
+            <h2 class="center-block">Edit Quiz</h2>
+            <div>
+                <label for="Question">Question Id:</label>
+                <input type="text" class="form-group form-control" />
+            </div>
+            <div>
+                <label for="Question">Quiz id:</label>
+                <input type="text" class="form-group form-control" />
+            </div>
+            <div>
+                <label for="Question">Question</label>
+                <textarea type="text" class="form-group form-control"></textarea>
+            </div>
+            <div class="row form-group">
+                <label for="Question">Status</label>
+                Enable: <input type="radio" name="radio" value="1" id="radio1" checked="checked">
+                Disable: <input type="radio" name="radio" value="2" id="radio2">
+            </div>
+            <div class="form-group">
+                <input type="submit" id="updateQues" value="Update" class="btn btn-primary" />
+                <input type="submit" id="QuesDel" value="Add" class="btn btn-danger" />
+            </div>
+        </div>
+
+         --------------------------------------------------------------------------------------------------------------
+
+        <div id="addAns" class="form-group toshow">
+            <h2 class="center-block">Add Answer</h2>
+            <div id="Ans">
+                <label for="Question">Question id:</label>
+                <input type="text" id="addAnsQuestion" class="form-group form-control" />
+            </div>
+            <div>
+                <label for="Question">Answer</label>
+                <textarea type="text" id="addAnsAnswer" class="form-group form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <input type="submit" id="addAnsAdd" value="Add" class="btn btn-primary" />
+            </div>
+        </div>
+
+         --------------------------------------------------------------------------------------------------------------
+        <div id="addExpl" class="form-group toshow">
+            <h2 class="center-block">Add Explanation</h2>
+            <div id="add">
+                <label for="Question">Question id:</label>
+                <input type="text" id="addExplQuestion" class="form-group form-control" />
+            </div>
+            <div>
+                <label for="Question">Question</label>
+                <textarea type="text" id="addExplExplanation" class="form-group form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <input type="submit" id="addExplAdd" value="Add" class="btn btn-primary" />
+            </div>
+
+        </div>
+
+
+         --------------------------------------------------------------------------------------------------------------
+        <div id="editAns" class="toshow">
+            <h2 class="center-block">Edit Answer</h2>
+            <div>
+                <label for="Question">Question id:</label>
+                <input type="text" class="form-group form-control" />
+            </div>
+            <div>
+                <label for="Question">Answer</label>
+                <textarea type="text" class="form-group form-control"></textarea>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" id="update" value="Update" class="btn btn-primary" />
+                <input type="submit" id="AnsDel" value="Delete" class="btn btn-danger" />
+            </div>
+        </div>
+
+         --------------------------------------------------------------------------------------------------------------
+        <div id="editExpl" class="toshow">
+            <h2 class="center-block">Edit Explanation</h2>
+            <div>
+                <label for="Question">Question id:</label>
+                <input type="text" id="editExplQues" class="form-group form-control" />
+            </div>
+            <div>
+                <label for="Question">Explanation</label>
+                <textarea type="text" id="editExplExpl" class="form-group form-control"></textarea>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" id="updateExpl" value="Update" class="btn btn-primary" />
+                <input type="submit" id="ExplDel" value="Delete" class="btn btn-danger" />
+            </div>
+        </div>
+
+
+    </div>*@
+    
+@*<div class="row">
+    <div class="col-lg-5">
+        <div class="form-group row">
+            <input type="text" class="form-control" id="questionSearchBtn" /> <input type="search" id="questionSearch" class="btn btn-default" />
+        </div>
+        <label class="form-group">Quiz Questions</label>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group row">
+            <input type="text" class="form-control col-md-3" id="ansSearchBtn" /> <input type="submit" id="ansSearch"value="Go"  class="btn btn-default" />
+        </div>
+        <div>
+            <label class="form-group">Answer</label>
+        </div>
+        <div>
+            <label class="form-group">Explanation</label>
+        </div>
+
+    </div>
+    <div class="col-lg-2">
+        <label class="form-group">Tags</label>
+    </div>*@
+
+
+
+

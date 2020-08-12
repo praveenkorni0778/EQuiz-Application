@@ -1,0 +1,211 @@
+﻿td.entryTd {
+    width: 80px;
+}
+table.entryTable {
+    width: 600px;
+}
+
+#data-grid-demo {
+    
+    width: 1250px;
+    padding-left : 100px;
+}
+.dx-texteditor-container .dx-texteditor-input{
+	height: 37px !important;
+}
+.dx-show-clear-button .dx-icon-clear{
+background-image: url("Images/dx.lookupClear.png") !important;
+}
+.dx-context-menu-container-border{
+background-image: url("Images/dx.search.png") !important;
+/*background-repeat:no-repeat !important;
+background-size: 35px 35px;*/
+
+}
+.dx-menu-items-container{
+background-image: url("Images/dx.search.png") !important;
+background-repeat:no-repeat !important;
+background-size: 35px 35px;
+}
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    
+}
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dx-dropdowneditor-icon::before {
+	background-image: url("Images/dx.Dropdown.png") !important;
+background-size: 20px 20px;
+}
+/*change font color*/
+.custom[role="columnheader"]{
+    font-size: 25px;
+}
+
+/* change alternate row color*/
+.dx-datagrid .dx-row-alt > td {
+    
+}
+
+/* change color of grid header*/
+.columnHeaderCSS {
+    font-weight: bold;
+    color: #000000;
+    background-color: #e1000f !important;
+}
+
+.dx-header-row > td[role="columnheader"]> div.dx-datagrid-text-content {
+      font-size: 14px !important;
+      font-weight: bold !important;
+      color: black !important;
+}
+
+.td-class1{
+	width: 5%; 
+	text-align: center;
+	border-bottom-color: #e1000f;
+	border-bottom-width: 3pt;
+	border-bottom-style: solid;
+}
+
+.td-class2{
+	width: 95%;
+	border-bottom-color: #e1000f;
+	border-bottom-width: 3pt;
+	border-bottom-style: solid;
+}
+
+.imgcss:hover
+	{
+		border: solid 2px #e1000f;
+  		margin: -2px;	
+	}
+
+#pageStatus{
+   padding-left : 100px;
+}
+
+#gridContainer {
+    //padding-top: 28px;
+    width: 1400px;
+height:850px;
+}
+.dx-filterbuilder-overlay .dx-scrollable-container {
+    max-height: 400px;
+	}
+.dx-toolbar-items-container {
+    width: 18% !important;
+}
+
+.dx-datagrid-text-content {
+    font-weight: bold !important;
+    color: black !important;
+    font-size: 14px !important;
+}
+
+.dx-page-sizes:before {
+    content: 'Number of Pages to display :' !important;
+    font-size: 14px;
+    font-weight:bold;
+}
+
+.dx-popup-bottom.dx-toolbar .dx-toolbar-items-container {
+    float: right !important;
+}
+
+.dx-popup-bottom.dx-toolbar {
+    padding-top: 0px !important;
+    padding-right: 30px !important;
+    padding-left: 0px !important;
+    padding-bottom: 70px !important;
+}
+.dx-toolbar-after {
+    left: 0;
+}
+
+.dx-page-sizes:before {
+    content: 'Number of Records to Display :' !important;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.dx-datagrid-addrow-button .dx-icon-edit-button-addrow {
+    background-image: url("Images/dx.plus.jpg") !important;
+    background-size: 35px 35px;
+}
+
+.dx-icon-remove:before {
+  content: "\f00a";
+  background-image:url('Images/dx.cross.jpg')  !important;
+  background-repeat:no-repeat !important;
+}
+
+.radio-toolbar{
+    padding-left: 100px;
+}
+#noFilterValue {    
+    padding-left: 100px;
+	color:#e1000f;
+	font-size:14pt;
+}
+.radio-toolbar input[type="radio"] {
+    display: none;
+}
+
+.radio-toolbar label 
+{
+    display: inline-block;
+    background-color: #e5e5e5;
+    padding: 6px 6px;
+    font-size: 14px;
+    cursor: pointer;
+    color:black;
+    text-align: center;
+    width:195px;
+    font-weight:normal;
+    height: 38px !important;
+    border:1px solid gray !important;
+    border-radius: 10px;
+}
+.dx-pager .dx-pages .dx-selection, .dx-pager .dx-page-sizes .dx-selection
+{
+    color:white;
+    background-color:#e1000f;
+    font-weight: bold;
+}
+
+.radio-toolbar label:hover {
+  background-color: #C0C0C0;
+    border:1px solid #e1000f !important;
+    font-weight:bold;
+border-radius: 12px;
+
+}
+.radio-toolbar input[type="radio"]:checked + label { 
+border:1px #e5e5e5 !important;
+    background-color:#e1000f;
+    border-color: silver;
+    color: white;
+    font-weight:bold;
+    border:1px solid gray !important;
+    border-radius: 12px;
+}
+
+.p-font {
+    font-size: 18px;
+}
+
+.h3-font {
+    padding: 4px 4px;
+    font-size: 18px;
+    font-weight: bold;
+}
+dx.Custom.css
